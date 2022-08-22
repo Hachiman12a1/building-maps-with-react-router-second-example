@@ -2,8 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./MainNavigation.module.css";
 
-MainNavigation.propTypes = {};
-
 function MainNavigation(props) {
   return (
     <header className={classes.header}>
