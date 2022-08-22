@@ -1,16 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Fragment } from "react";
+import { useParams } from "react-router-dom";
 
-QuoteDetail.propTypes = {
-    
-};
+QuoteDetail.propTypes = {};
 
 function QuoteDetail(props) {
-    return (
-        <h1>
-            Quote Detail Page
-        </h1>
-    );
+  const params = useParams();
+  return (
+    <Fragment>
+      <h1>Quote Detail Page</h1>
+      <p>{params.quoteId}</p>
+    </Fragment>
+  );
 }
 
 export default QuoteDetail;
