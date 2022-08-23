@@ -1,14 +1,15 @@
 import { Fragment, useRef, useState } from "react";
-import { Prompt } from "react-router-dom";
+// import { Prompt } from 'react-router-dom';
 
 import Card from "../UI/Card";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import classes from "./QuoteForm.module.css";
 
 const QuoteForm = (props) => {
+  const [isEntering, setIsEntering] = useState(false);
+
   const authorInputRef = useRef();
   const textInputRef = useRef();
-  const [isEntering, setIsEntering] = useState(false);
 
   function submitFormHandler(event) {
     event.preventDefault();
@@ -21,25 +22,26 @@ const QuoteForm = (props) => {
     props.onAddQuote({ author: enteredAuthor, text: enteredText });
   }
 
-  const formFocusHandler = () => {
-    setIsEntering(true);
+  const finishEnteringHandler = () => {
+    setIsEntering(false);
   };
 
-  const finishEnteredHandler = () => {
-    setIsEntering(false);
+  const formFocusedHandler = () => {
+    setIsEntering(true);
   };
 
   return (
     <Fragment>
-      <Prompt
+      {/* Prompt is currently not supported yet by v6 */}
+      {/* <Prompt
         when={isEntering}
         message={(location) =>
-          "Are you want to leave page? All your entered data will be lost"
+          'Are you sure you want to leave? All your entered data will be lost!'
         }
-      />
+      /> */}
       <Card>
         <form
-          onFocus={formFocusHandler}
+          onFocus={formFocusedHandler}
           className={classes.form}
           onSubmit={submitFormHandler}
         >
@@ -58,7 +60,7 @@ const QuoteForm = (props) => {
             <textarea id="text" rows="5" ref={textInputRef}></textarea>
           </div>
           <div className={classes.actions}>
-            <button className="btn" onClick={finishEnteredHandler}>
+            <button onClick={finishEnteringHandler} className="btn">
               Add Quote
             </button>
           </div>

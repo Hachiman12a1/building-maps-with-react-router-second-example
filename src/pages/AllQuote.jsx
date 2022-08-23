@@ -3,12 +3,7 @@ import LoadingSpinner from "../components/UI/LoadingSpinner";
 import useHttp from "../hooks/use-http";
 import { getAllQuotes } from "../lib/api";
 import QuoteList from "./../components/quotes/QuoteList";
-import NoQuotesFound from './../components/quotes/NoQuotesFound';
-
-const DUMMY_DATA = [
-  { id: "q1", author: "Dat", text: "Learning React is fun!" },
-  { id: "q2", author: "Max", text: "Learning React is great!" },
-];
+import NoQuotesFound from "./../components/quotes/NoQuotesFound";
 
 function AllQuote(props) {
   const {
@@ -30,12 +25,12 @@ function AllQuote(props) {
     );
   }
 
-  if(error) {
-    return <p className="centered focused">{error}</p>
+  if (error) {
+    return <p className="centered focused">{error}</p>;
   }
 
-  if(status === 'completed' && (!loadedQuotes || loadedQuotes.length === 0)) {
-    return <NoQuotesFound/>
+  if (status === "completed" && (!loadedQuotes || loadedQuotes.length === 0)) {
+    return <NoQuotesFound />;
   }
 
   return <QuoteList quotes={loadedQuotes} />;
